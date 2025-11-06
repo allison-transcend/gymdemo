@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gymfinity Co. — Athleisure for Urban Millennials</title>
+  <meta name="description" content="Gymfinity Co. — premium athleisure that fuses performance and style. Shop the latest drops for life on the move." />
+  <meta property="og:title" content="Gymfinity Co." />
+  <meta property="og:description" content="Premium athleisure for life on the move." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#6c2bd9" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b10;           /* near-black */
+      --bg-elev:#13131a;      /* card bg */
+      --purple:#7c3aed;       /* primary */
+      --purple-600:#6d28d9;   /* hover */
+      --text:#e9e9ee;         /* base text */
+      --muted:#b3b3c2;        /* secondary text */
+      --accent:#a78bfa;       /* gradient edge */
+      --success:#22c55e;
+      --danger:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+    /* Navbar */
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(11,11,16,.92) 0%, rgba(11,11,16,.6) 100%);backdrop-filter: blur(8px);border-bottom:1px solid rgba(124,58,237,.18)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .brand-dot{width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 18px var(--purple)}
+    .nav-links{display:flex;gap:22px}
+    .nav-cta{display:flex;align-items:center;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;font-weight:600;border:1px solid transparent;transition:all .2s ease}
+    .btn.primary{background:var(--purple);}
+    .btn.primary:hover{background:var(--purple-600);transform:translateY(-1px)}
+    .btn.ghost{border-color:rgba(255,255,255,.1);background:transparent}
+    .btn.ghost:hover{border-color:rgba(255,255,255,.25)}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:-30% -10% auto -10%;height:70vh;pointer-events:none;background:radial-gradient(60% 60% at 50% 40%, rgba(124,58,237,.35) 0%, rgba(124,58,237,0) 60%), radial-gradient(40% 40% at 70% 20%, rgba(167,139,250,.22) 0%, rgba(167,139,250,0) 55%)}
+    .hero .container{padding-top:80px;padding-bottom:64px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px}
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem}
+    .headline{font-weight:800;line-height:1.05;font-size:clamp(2rem,4.5vw,3.5rem)}
+    .subhead{color:var(--muted);margin-top:14px;max-width:60ch}
+    .hero-ctas{display:flex;gap:12px;margin-top:22px}
+    .hero-media{position:relative}
+    .card{background:linear-gradient(180deg, rgba(124,58,237,.08), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.35);overflow:hidden}
+    .card-inner{padding:10px}
+
+    /* Features */
+    .section{padding:64px 0}
+    .section-header{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:26px}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+    .title{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:800}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature{background:var(--bg-elev);border:1px solid rgba(255,255,255,.06);padding:22px;border-radius:16px}
+    .feature h3{margin:0 0 8px;font-size:1.05rem}
+    .feature p{margin:0;color:var(--muted)}
+
+    /* Collections */
+    .collections{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .collection{position:relative;border-radius:16px;overflow:hidden}
+    .collection img{height:280px;width:100%;object-fit:cover;filter:grayscale(.1) contrast(1.05)}
+    .collection .label{position:absolute;left:14px;bottom:14px;background:rgba(12,12,18,.65);backdrop-filter: blur(4px);border:1px solid rgba(255,255,255,.18);padding:10px 14px;border-radius:999px;font-weight:700}
+
+    /* Reviews */
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .quote{background:var(--bg-elev);border:1px solid rgba(255,255,255,.06);padding:24px;border-radius:16px}
+    .quote .stars{letter-spacing:2px}
+    .stars{color:#ffd166}
+    .byline{color:var(--muted);font-size:.92rem;margin-top:8px}
+
+    /* Signup */
+    .signup{display:grid;grid-template-columns:1fr .8fr;gap:22px;align-items:center}
+    .form{display:flex;gap:10px}
+    input[type="email"]{flex:1;appearance:none;background:#0f0f16;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 16px;border-radius:12px}
+    input[type="email"]::placeholder{color:#8a8aa3}
+    .note{color:var(--muted);font-size:.9rem}
+
+    /* Footer */
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;align-items:center}
+    .social{display:flex;gap:14px}
+    .social a{opacity:.8}
+    .social a:hover{opacity:1}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .features, .collections, .reviews{grid-template-columns:1fr 1fr}
+      .signup{grid-template-columns:1fr}
+    }
+    @media (max-width: 600px){
+      .features, .collections, .reviews{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="Gymfinity Co. home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Gymfinity Co.</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#collections">Collections</a>
+        <a href="#features">Features</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#signup">Join</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#collections">Shop</a>
+        <a class="btn primary" href="#signup">Join Crew</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">New Drop Live</div>
+        <h1 class="headline">Performance meets style. <br>Built for the city.</h1>
+        <p class="subhead">Premium athleisure engineered for movement and designed for life on the go. Look good, feel powerful, move freely.</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#collections">Shop Now</a>
+          <a class="btn ghost" href="#features">Explore Features</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1400&auto=format&fit=crop" alt="Athleisure model wearing Gymfinity in an urban setting" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Why Gymfinity</div>
+          <h2 class="title">Comfort, fit, and performance — without compromise</h2>
+        </div>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>Second‑Skin Comfort</h3>
+          <p>Ultra‑soft fabrics with four‑way stretch to keep you moving.</p>
+        </div>
+        <div class="feature">
+          <h3>City‑Proof Build</h3>
+          <p>Moisture‑wicking, breathable, and made to last through every commute and class.</p>
+        </div>
+        <div class="feature">
+          <h3>Tailored Fit</h3>
+          <p>Clean lines and modern silhouettes designed for everyday wear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section id="collections" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Top Collections</div>
+          <h2 class="title">Built for life on the move</h2>
+        </div>
+        <a class="btn ghost" href="#">View All</a>
+      </div>
+      <div class="collections">
+        <a class="collection" href="#">
+          <img src="https://images.unsplash.com/photo-1526401485004-2fda9f4f0a68?q=80&w=1400&auto=format&fit=crop" alt="Women's athleisure set" />
+          <span class="label">Women</span>
+        </a>
+        <a class="collection" href="#">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1400&auto=format&fit=crop" alt="Men's athleisure jacket" />
+          <span class="label">Men</span>
+        </a>
+        <a class="collection" href="#">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1400&auto=format&fit=crop" alt="Accessories: gym bag and bottle" />
+          <span class="label">Accessories</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Reviews</div>
+          <h2 class="title">Loved by the Gymfinity Crew</h2>
+        </div>
+      </div>
+      <div class="reviews">
+        <div class="quote">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <p>“The leggings feel like a second skin. I wear them from studio to street.”</p>
+          <div class="byline">— Maya, NYC</div>
+        </div>
+        <div class="quote">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <p>“Clean fits, great fabric, and they actually last. I’m a fan.”</p>
+          <div class="byline">— Jordan, Chicago</div>
+        </div>
+        <div class="quote">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <p>“Finally gear I can lift in and still look put‑together at brunch.”</p>
+          <div class="byline">— Alex, LA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Signup -->
+  <section id="signup" class="section">
+    <div class="container signup">
+      <div>
+        <div class="kicker">Join the Gymfinity Crew</div>
+        <h2 class="title">Get early access to drops & exclusive offers</h2>
+        <p class="note">We’ll only send the good stuff. Unsubscribe anytime.</p>
+      </div>
+      <form class="form" action="#" method="post" onsubmit="event.preventDefault(); document.getElementById('signupMsg').textContent='Thanks — you\'re in!';">
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        <button class="btn primary" type="submit">Sign Up</button>
+      </form>
+      <div id="signupMsg" class="note" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>© <span id="year"></span> Gymfinity Co. • All rights reserved.</div>
+      <div class="social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="X (Twitter)">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Utility JS (keep it tiny)
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ↓↓↓ Paste your consent manager snippet right here (before closing body) ↓↓↓ -->
+  <!-- Example: <script src="https://cdn.your-consent-manager.js" data-site-id="..." async></script> -->
+  <!-- Consent Manager: START -->
+  
+  <!-- Consent Manager: END -->
+</body>
+</html>
