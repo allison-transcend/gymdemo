@@ -38,17 +38,6 @@
       gtag('event', 'page_view');
       beacon('https://www.google-analytics.com/collect?v=1&t=pageview&tid=UA-000000-2&cid=555&dp=%2Fdemo-noscript');
     },
-    // Google Tag Manager
-    gtm: async function(){
-      (function(w,d,s,l,i){ w[l]=w[l]||[]; w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:''; j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-ABCDE1');
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-ABCDE1';
-      iframe.width = 0; iframe.height = 0; iframe.style = 'display:none;visibility:hidden';
-      document.body && document.body.appendChild(iframe);
-    },
     // Google Ads
     gAds: async function(){
       await loadScript('https://www.googletagmanager.com/gtag/js?id=AW-1234567890');
@@ -67,16 +56,7 @@
       fbq('init', '000000000000000');
       fbq('track', 'PageView');
       beacon('https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1');
-    },
-    // Segment
-    segment: async function(){
-      !function(){var analytics=window.analytics=window.analytics||[]; if(!analytics.initialize)
-        if(analytics.invoked) window.console && console.error && console.error('Segment snippet included twice.');
-        else{ analytics.invoked=!0; analytics.methods=['trackSubmit','trackClick','trackLink','trackForm','pageview','identify','reset','group','track','ready','alias','debug','page','once','off','on','addSourceMiddleware','addIntegrationMiddleware','setAnonymousId','addDestinationMiddleware'];
-          analytics.factory=function(t){ return function(){ var e=Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } };
-          for(var t=0; t<analytics.methods.length; t++){ var e=analytics.methods[t]; analytics[e]=analytics.factory(e) }
-          analytics.load=function(key){ var n=document.createElement('script'); n.async=!0; n.src='https://cdn.segment.com/analytics.js/v1/111/analytics.min.js'; var a=document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(n,a) };
-          analytics.SNIPPET_VERSION='4.15.3'; analytics.load('111'); analytics.page(); }}();
+      
     },
     // Mixpanel
     mixpanel: async function(){
