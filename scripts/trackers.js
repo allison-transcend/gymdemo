@@ -142,10 +142,8 @@
     await Promise.allSettled([
       Vendors.assets(),
       Vendors.ga4(),
-      Vendors.gtm(),
       Vendors.gAds(),
       Vendors.meta(),
-      Vendors.segment(),
       Vendors.mixpanel(),
       Vendors.fullstory(),
       Vendors.heap(),
